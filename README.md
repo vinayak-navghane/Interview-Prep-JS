@@ -11,8 +11,4 @@
     one();
     three();
     ```
-    ```excalidraw
-
-eventloop.excalidraw.png
-
-```
+    ![Event Loop](eventLoop.excalidraw.png)
