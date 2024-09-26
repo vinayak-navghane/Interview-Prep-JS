@@ -31,3 +31,17 @@
     3. three() get called , being moved to call stack and prints "Third".         
 
     4. Event loop first checks micro tasks queue, which is empty then checks macro task queue and moves two to call stack for execution and prints "Second".
+
+
+    2. ### What is Hoisting
+
+    In JavaScript, before executing any code, the JavaScript engine performs a memory preparation phase known as hoisting. During this phase, the engine allocates memory for variables and functions:
+
+     1.Function declarations are fully hoisted, meaning they can be invoked anywhere within their scope, even before their actual line of declaration.
+
+     2.Variables declared with var are hoisted and initialized with undefined. This means you can access var variables before their declaration, but their value will be undefined.
+
+     3.Variables declared with let and const are also hoisted but remain uninitialized. Accessing them before their declaration in the code results in a ReferenceError.
+     
+    This period between the start of the block and the actual declaration of a let or const variable is called the Temporal Dead Zone (TDZ). The TDZ exists from the start of the block until the line where the variable is declared and initialized.
+    
