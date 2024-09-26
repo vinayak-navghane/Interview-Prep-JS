@@ -44,4 +44,25 @@
      3.Variables declared with let and const are also hoisted but remain uninitialized. Accessing them before their declaration in the code results in a ReferenceError.
 
     This period between the start of the block and the actual declaration of a let or const variable is called the Temporal Dead Zone (TDZ). The TDZ exists from the start of the block until the line where the variable is declared and initialized.
-    
+
+3. ### What is Scope and Scope Chaining?    
+   
+   Scope governs the accessibility of the declared variable. 
+
+   There are 3 types of scopes:
+   1. Gloabal Scope
+   2. Local Scope
+   3. Block Scope(Functional Scope)
+
+   Block scope is the scope inside block ie {}.
+
+   Global scope in case of browser it is window object and in case of execution environment like Nodejs it is Global (mostly black {}).
+
+   Variables declared with var has global scope and variables decalred with let and const has block scope.
+
+   ###Scope Chaining -
+   Javascript has its variable hunting mechanism.It hunts for variable until global scope or global execution context.
+
+   for example - Js looks for variable declaration in block scope first, If it didn't find any declaration then it moves towards outer scope and with this same process it keeps on looking till the global execution context is reached.
+
+   inner -> outer -> outer -> ...global
