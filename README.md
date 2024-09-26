@@ -59,9 +59,10 @@
    Global scope in case of browser it is window object and in case of execution environment like Nodejs it is Global (mostly black {}).
 
    Variables declared with var has global scope and variables decalred with let and const has block scope.
+   
 
    **Scope Chaining** - 
-   
+
    Javascript has its variable hunting mechanism.It hunts for variable until global scope or global execution context.
 
    for example - Js looks for variable declaration in block scope first, If it didn't find any declaration then it moves towards outer scope and with this same process it keeps on looking till the global execution context is reached.
