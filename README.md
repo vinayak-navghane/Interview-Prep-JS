@@ -1,6 +1,8 @@
-1. ### Event Loop and Async js
+1. ### What is Event Loop and Async javascript
 
-    Javascript is single threaded language but we do see asynchronous non-blocking behaviour in javascript. This behaviour is possible because of Event Loop
+    Javascript is single threaded language but we do see asynchronous non-blocking behaviour in javascript. This behaviour is possible because of Event Loop.
+
+    When an asynchronous task such as HTTP request or a DOM event is initiated, it is handed off to browser API's. Once these tasks are completed, their callbacks are placed into either microtask(priority) queue or the macrotask queue, depending upon the nature of the event.
     
     The event loop is a process that continuously monitors both the call stack and the event queue and checks whether or not the call stack is empty. If the call stack is empty and there are pending events in the event queue, the event loop dequeues the event from the event queue and pushes it to the call stack. The call stack executes the event, and any additional events generated during the execution are added to the end of the event queue.
 
