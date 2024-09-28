@@ -68,3 +68,163 @@
    for example - Js looks for variable declaration in block scope first, If it didn't find any declaration then it moves towards outer scope and with this same process it keeps on looking till the global execution context is reached.
 
    inner -> outer -> outer -> ...global
+
+
+4. ### what is prototypal inheritance
+
+   Prototypal inheritance refers to linking of prototypes of a parent object to a child object to share & utilize properties of parennt class.
+   means sharing of properties, methods across objects can be done by prototypal inheritance
+   
+   single __proto__ can inherit only one class
+   for multiple inheritance we use : __proto__.__proto__ // called as prototypal chaining as well.
+
+   example - 1 (old way)
+   ```javascript
+   let company = {
+     name: "Google",
+     salary: function(){
+        console.log("500k salary")
+     }
+   }
+
+   let engineer = {
+    empId = 123,
+    task: function(){
+        console.log("task assigned")
+    }
+   }
+
+   engineer.__proto__ = company
+   console.log(engineer)
+   engineer.salary()
+   ```
+ example - 2 (latest way)
+ ```javascript
+    let company = {
+     name: "Google",
+     salary: function(){
+        console.log("500k salary")
+     }
+   }
+
+   let engineer = Object.create(company, {
+    empId: { value: 123},
+    task: {
+            value: function() {
+                console.log("task assigned");
+            }
+          }
+});
+
+console.log(engineer);
+engineer.salary();
+ ```
+
+ Prototypal inheritance is a type of object-oriented programming inheritance in which an object inherits properties and methods from another object, known as its prototype. In this model, objects are created by cloning or copying an existing object, which serves as the prototype.
+
+ In prototypal inheritance, each object in a program has a special internal property called [[Prototype]] (also sometimes called __proto__ in JavaScript). This property holds a reference to another object, known as its prototype.
+
+ prototype is a property of a constructor function in JavaScript, while __proto__ is a property of every object.
+
+ When you create a constructor function in JavaScript, it automatically gets a prototype property, which is an object. This object is used as the prototype for all objects created using the constructor function as a constructor with the new keyword. For example:
+
+ Prototypal inheritance is used in many programming languages, including JavaScript, which uses prototypal inheritance as its primary mechanism for object-oriented programming.
+
+
+ Object.getPrototypeOf() -
+ Object.getPrototypeOf() returns the prototype of the specified object. This is useful for inspecting the prototype chain of an object.
+
+ ```javascript
+ const parent = {
+    greet() {
+        console.log(`Hello from ${this.name}`);
+    }
+ };
+
+ const child = Object.create(parent);
+ child.name = "Child";
+
+ console.log(Object.getPrototypeOf(child) === parent); // true
+ ```
+ Object.getPrototypeOf(child) returns parent, confirming that child's prototype is parent.
+
+
+ Object.setPrototypeOf() -
+ Object.setPrototypeOf() sets the prototype (i.e., the internal [[Prototype]] property) of a specified object to another object or null.
+
+ ```javascript
+ const parent = {
+    greet() {
+        console.log(`Hello from ${this.name}`);
+    }
+ };
+
+ const anotherParent = {
+    greet() {
+        console.log(`Hi from ${this.name}`);
+    }
+};
+
+ const child = {
+    name: "Child"
+};
+
+ // Initially set the prototype of child to parent
+ Object.setPrototypeOf(child, parent);
+ child.greet(); // Hello from Child
+ 
+ // Change the prototype of child to anotherParent
+ Object.setPrototypeOf(child, anotherParent);
+ child.greet(); // Hi from Child
+ ```
+ in above code - 
+ child's prototype is initially set to parent using Object.setPrototypeOf(child, parent).
+ Later, child's prototype is changed to anotherParent using Object.setPrototypeOf(child, anotherParent).
+ The greet method output changes accordingly, demonstrating the change in prototype.
+
+
+5. ### What is property shadowing in prototypal inheritance
+
+ Property shadowing in prototypal inheritance occurs when an object property has the same name as a property in its prototype chain. This means the object's property will shadow or override the property in the prototype chain, making the prototype property inaccessible through the object instance.
+
+ ```javascript
+ // Base object
+const baseObject = {
+    type: "Base",
+    describe() {
+        console.log(`This is a ${this.type} object.`);
+    }
+ };
+
+ // Derived object inheriting from baseObject
+ const derivedObject = Object.create(baseObject);
+ derivedObject.type = "Derived";
+
+ // Accessing properties and methods
+ baseObject.describe();     // This is a Base object.
+ derivedObject.describe();  // This is a Derived object.
+ console.log(derivedObject.type); // Derived
+
+ // Shadowing example
+ console.log(baseObject.type); // Base
+ console.log(derivedObject.type); // Derived
+ ```
+ baseObject is the base object with a type property and a describe method.
+ derivedObject is created using Object.create(baseObject), so it inherits from baseObject.
+ derivedObject defines its own type property, which shadows the type property in baseObject.
+ When we call describe() on derivedObject, it uses the type property from derivedObject itself, not from baseObject, demonstrating property shadowing.
+
+6. ### What is Monkey Patching 
+
+ Monkey patching is a technique to add, modify, or suppress the default behavior of a piece of code at runtime without changing its original source code.
+
+ Monkey patching is often considered a dangerous technique. Not too long ago, the use of Monkey patching has caused the rename of ECMAScript’s 2015 method String.prototype.contains() to String.prototype.includes().
+
+ This change was necessary to avoid that websites using MooTools, which adds a contains() method to String.prototype, were broken due to introduction of the ECMAScript version of the method. In particular, the problem was that the contains() method added by MooTools and the contains() method added in ECMAScript 2015 were incompatible.
+
+ The lesson to learn here is that Monkey patching, especially when used on a built-in object, can interfere with the evolution of the language.
+
+ for example avoid modifying array methods like Array.prototype.newlength because later versions of JS might introduce methods with same name and your code might break.
+
+
+
