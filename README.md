@@ -227,4 +227,69 @@ const baseObject = {
  for example avoid modifying array methods like Array.prototype.newlength because later versions of JS might introduce methods with same name and your code might break.
 
 
+7. ### What is Promises
 
+ Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+
+ Promise is a placeholder for a certain period of time until we receive a value from an asynchronous operation. OR
+
+ In JavaScript, a Promise is an object that represents a value that may not be available yet, but will be resolved at some point in the future. Promises are commonly used for asynchronous programming, where a task may take some time to complete and you don't want to block the rest of the code from executing.
+
+  - a promise is used to handle asynchronous results of operation. But javascript is synchronous language
+  -with promises we can defer execution of code until async request is completed
+  states of promises;
+  peinding: initial state before promise is succeed or fail
+  resolved: promise completed
+  rejected: failed promise'
+
+ To use a Promise, you can attach then and catch methods to it, which will be called when the Promise is resolved or rejected, respectively. For example:
+
+  ```` javascript 
+  const mypromise-new promise((resove, reject)=>{
+  let condition=true
+  if(condition){
+  resolve("promise resolve")
+  }
+  else{
+  reject("promise reject")
+  }
+  })
+
+  //using promises:
+  mypromise. Then((res)=>{
+  console. Log(res)
+  }). Catch((err)=>console. Log(err))
+  ````
+
+  ![Promises](Promise1.jpg)
+  ![Promises](Promise2.jpg)
+  
+  ````javascript
+  console.log("start");
+
+setTimeout(() => {
+  console.log("setTimeout");
+}, 0);
+
+Promise.resolve("Promise!").then((res) => console.log(res));
+
+console.log("End!");
+
+/* 
+o/p -
+start
+End! 
+Promise! 
+setTimeout
+*/
+
+/**
+ * first console was executed and start is printed
+ * then it goes to setTimeout, setTimeout is added in task queue/ macro task queue and waiting for call stack to clear
+ * then promise is executed and it is added in micro task queue where it is waiting to be resolved
+ * then the last console.log executed which is End! in this case.
+ * Now call stack is empty. Event loop now will check for the task in micro and task queue.
+ * As micro stack has higher priority, Promise will be executed first and after that setTime out in task/Macro task queue is executed.
+ */
+
+  ````
