@@ -35,7 +35,7 @@
 
 2. ### What is Hoisting
 
-    In JavaScript, before executing any code, the JavaScript engine performs a memory preparation phase known as hoisting. During this phase, the engine allocates memory for variables and functions:
+     Hoisting is a term used to explain the behavior of variable declarations in your code. Variables declared or initialized with the var keyword will have their declaration "moved" up to the top of their containing scope during compilation, which we refer to as hoisting.
 
      1.Function declarations are fully hoisted, meaning they can be invoked anywhere within their scope, even before their actual line of declaration.
 
