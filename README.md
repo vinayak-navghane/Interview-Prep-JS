@@ -229,13 +229,13 @@ const baseObject = {
 
 7. ### What is Promises
 
- Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+ Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
 
  Promise is a placeholder for a certain period of time until we receive a value from an asynchronous operation. OR
 
  In JavaScript, a Promise is an object that represents a value that may not be available yet, but will be resolved at some point in the future. Promises are commonly used for asynchronous programming, where a task may take some time to complete and you don't want to block the rest of the code from executing.
 
-  states of promises :
+  states of promises : <br/>
   pending: initial state before promise is succeed or fail <br/>
   resolved: promise completed <br/>
   rejected: failed promise' <br/>
