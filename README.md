@@ -235,10 +235,10 @@ const baseObject = {
 
  In JavaScript, a Promise is an object that represents a value that may not be available yet, but will be resolved at some point in the future. Promises are commonly used for asynchronous programming, where a task may take some time to complete and you don't want to block the rest of the code from executing.
 
-  states of promises;
-  pending: initial state before promise is succeed or fail
-  resolved: promise completed
-  rejected: failed promise'
+  states of promises :
+  pending: initial state before promise is succeed or fail <br/>
+  resolved: promise completed <br/>
+  rejected: failed promise' <br/>
 
  To use a Promise, you can attach then and catch methods to it, which will be called when the Promise is resolved or rejected, respectively. For example:
 
