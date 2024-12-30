@@ -56,7 +56,7 @@
 
    Block scope is the scope inside block ie {}.
 
-   Global scope in case of browser it is window object and in case of execution environment like Nodejs it is Global (mostly black {}).
+   Global scope in case of browser it is window object and in case of execution environment like Nodejs it is Global.
 
    Variables declared with var has global scope and variables decalred with let and const has block scope.
    
